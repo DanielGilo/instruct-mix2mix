@@ -1,0 +1,10 @@
+/* src/index.css */
+@import "tailwindcss";
+
+/* Optional: tiny global tweaks that won't fight Tailwind */
+html, body, #root {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
