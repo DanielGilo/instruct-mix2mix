@@ -754,8 +754,7 @@ export default function ProjectPage() {
         subtitle={
           <>
             Compare edits of <span className="font-semibold">I-Mix2Mix</span>{" "}
-            and popular baselines: Instruct-GS2GS (I-GS2GS) [1],
-            Text2Video-Zero (T2VZ) [2], Direct Gaussian Editing (DGE) [3].
+            and popular baselines: Instruct-GS2GS (I-GS2GS) [1], Text2Video-Zero (T2VZ) [2], Direct Gaussian Editing (DGE) [3].
             Matching{" "}
             <span className="font-semibold text-red-500">red</span> and{" "}
             <span className="font-semibold text-purple-500">purple</span>{" "}
@@ -771,17 +770,18 @@ export default function ProjectPage() {
         </div>
       </Section>
 
-      {/* References */}
-      <Section id="references" title="References">
-        <ol className="list-decimal space-y-1 pl-5 text-sm text-slate-700">
-          {REFERENCES.map((ref, idx) => (
-            <li key={idx}>{ref}</li>
-          ))}
-        </ol>
+      <Section id="references" title="BibTeX & References">
+        <CopyBox label="BibTeX" text={BIBTEX} />
+
         <div className="mt-8">
-          <CopyBox label="BibTeX" text={BIBTEX} />
+          <ol className="list-decimal space-y-1 pl-5 text-sm text-slate-700">
+            {REFERENCES.map((ref, idx) => (
+              <li key={idx}>{ref}</li>
+            ))}
+          </ol>
         </div>
       </Section>
+
 
       <Footer />
 
