@@ -1,6 +1,3 @@
 // postcss.config.js (ESM)
-export default {
-  plugins: {
-    '@tailwindcss/postcss': {},
-  },
-}
+export default { plugins: { '@tailwindcss/postcss': {} } }
+
