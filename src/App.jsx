@@ -5,7 +5,7 @@ import { Github, FileText, Camera, Mail, Copy } from "lucide-react";
 const META = {
   title:
     "InstructMix2Mix: Consistent Sparse-View Editing Through Multi-View Model Personalization",
-  venue: "Under review",
+  //venue: "Under review",
   links: {
     paper: "#", // arXiv / OpenReview / camera-ready
     code: "#", // GitHub repo
@@ -554,11 +554,14 @@ export default function ProjectPage() {
         <div className="pointer-events-none absolute inset-x-0 top-[-6rem] -z-10 mx-auto h-72 max-w-3xl bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.18),_transparent_65%)]" />
         <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-16 sm:py-20 lg:flex-row lg:items-start lg:justify-between">
           {/* Left: title, authors, buttons */}
+          
           <div className="max-w-xl space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600">
-              <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
-              {META.venue}
-            </div>
+            {META.venue && (
+              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600">
+                <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
+                {META.venue}
+              </div>
+              )}
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-slate-900">
                 {META.title}
