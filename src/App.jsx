@@ -8,7 +8,7 @@ const META = {
   //venue: "Under review",
   links: {
     paper: "#", // arXiv / OpenReview / camera-ready
-    code: "#", // GitHub repo
+    code: "https://github.com/DanielGilo/instruct-mix2mix/tree/main", // GitHub repo
     demo: "#", // optional: demo / HF Space
   },
   authors: [
