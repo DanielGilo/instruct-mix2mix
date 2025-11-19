@@ -29,7 +29,7 @@ const META = {
 
 const ABSTRACT = (
   <>
-    Hi, We address the task of <strong>multi-view image editing</strong> from sparse
+    We address the task of <strong>multi-view image editing</strong> from sparse
     input views, where the inputs can be seen as a{" "}
     <span className="font-semibold">mix of images</span> capturing the scene
     from different viewpoints. The goal is to modify the scene according to a
