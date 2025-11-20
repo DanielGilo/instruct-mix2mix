@@ -7,7 +7,7 @@ const META = {
     "InstructMix2Mix: Consistent Sparse-View Editing Through Multi-View Model Personalization",
   //venue: "Under review",
   links: {
-    paper: "#", // arXiv / OpenReview / camera-ready
+    paper: "https://arxiv.org/abs/2511.14899", // arXiv / OpenReview / camera-ready
     code: "https://github.com/DanielGilo/instruct-mix2mix/tree/main", // GitHub repo
     demo: "#", // optional: demo / HF Space
   },
@@ -298,11 +298,14 @@ const REFERENCES = [
 ];
 
 // BibTeX (fill once de-anonymized)
-const BIBTEX = `@inproceedings{YourKey2026,
-  title     = {InstructMix2Mix: Consistent Sparse-View Editing Through Multi-View Model Personalization},
-  author    = {To be updated},
-  booktitle = {To be determined},
-  year      = {2026}
+const BIBTEX = `@misc{gilo2025instructmix2mixconsistentsparseviewediting,
+      title={InstructMix2Mix: Consistent Sparse-View Editing Through Multi-View Model Personalization}, 
+      author={Daniel Gilo and Or Litany},
+      year={2025},
+      eprint={2511.14899},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2511.14899}, 
 }`;
 
 // -------------- UI Helpers --------------
