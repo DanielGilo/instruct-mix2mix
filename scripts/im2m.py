@@ -321,8 +321,6 @@ def log_student_predictions(
 
     image_log_every = getattr(config, "image_log_every", 500)
 
-    # Always log first image after iteration 1, then every image_log_every steps:
-    # iter = 1, 1 + image_log_every, 1 + 2*image_log_every, ...
     if (iter_count > 1) and (iter_count % image_log_every != 0):
         return
 
@@ -363,7 +361,7 @@ def log_student_predictions(
 
 def build_models(config, value_dict):
     all_gt = value_dict["cond_frames"]  # [-1, 1]
-    num_inputs = 1  # assuming single input view as before
+    num_inputs = 1 
     torch_gt = (((all_gt[num_inputs:value_dict["num_imgs_no_padding"]] + 1) / 2.0) * 255).clamp(0, 255).to(torch.uint8)
     pil_gt = [to_pil_image(torch_gt[i]) for i in range(torch_gt.shape[0])]
 
@@ -590,7 +588,7 @@ def distill_step(
         device=device,
     )
 
-    # 3. Cross-frame attention key frame index
+    # 3. Set random cross-frame attention key frame index
     CrossFrameAttnProcessor.key_frame_index = torch.randint(
         0, z0_student_out_frames.shape[0], (1,), device=device
     ).item()
@@ -604,7 +602,6 @@ def distill_step(
         align_corners=False,
     ).to(dtype=teacher.dtype, device=device)
 
-    # Noise for teacher
     eps = torch.randn_like(student_pred, device=device)
 
     # 5. Compute loss
@@ -756,7 +753,6 @@ def train(config, student, teacher, value_dict, writer: SummaryWriter):
 
             final_imgs = final_imgs.clamp(0.0, 1.0)
             
-            # --- NEW SAVING LOGIC ---
             output_dir = Path(config.output_path)
             edited_frames_dir = output_dir / "edited_frames"
             edited_frames_dir.mkdir(parents=True, exist_ok=True)
@@ -779,7 +775,6 @@ def train(config, student, teacher, value_dict, writer: SummaryWriter):
             if config.verbose:
                 print(f"[TB] Logged final student prediction at iter {iter_count}.")
                 print(f"[Save] Saved {len(final_imgs)} edited frames and final grid to {output_dir}")
-            # ------------------------
 
 
 def main() -> None:

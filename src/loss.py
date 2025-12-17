@@ -10,7 +10,7 @@ def sds_loss(z0_student, teacher, teacher_guidance_scale, eps, timestep, w_t):
         grad_z = w_t * (e_t - eps)
         grad_z = torch.nan_to_num(grad_z.detach(), 0.0, 0.0, 0.0)
     sds_loss = grad_z.clone() * z0_student
-    sds_loss = sds_loss / z0_student.numel() # Daniel: normalization is necessary to avoid exploding grads
+    sds_loss = sds_loss / z0_student.numel() # normalization is necessary to avoid exploding grads
     del grad_z
     sds_loss = sds_loss.sum() 
 

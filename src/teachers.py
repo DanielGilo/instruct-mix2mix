@@ -190,9 +190,6 @@ class InstructPixToPixTeacher(Teacher):
         pred_z0 = (z_t - sigma_t * noise_pred) / alpha_t
         return noise_pred, pred_z0
     
-    # def plot_input(self, wb):
-    #     plot_frames(self.gt_images, wb, "GT", "GT")
-    #     plot_frames(self.forward_operator(self.gt_images), wb, "measurments", "measurments", save_as_pdf=True)
 
     @override
     def forward_operator(self, x):

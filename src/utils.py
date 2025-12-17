@@ -51,7 +51,6 @@ def get_depth_estimation(images):
     predictions = pipe(pil_images)
     pipe.model.to("cpu")
 
-    # 3. Extract depth maps as PIL, then convert to normalized uint8 RGB
     depth_pils = []
     for pred in predictions:
         # Depending on the pipeline, key may be "predicted_depth" or "depth"

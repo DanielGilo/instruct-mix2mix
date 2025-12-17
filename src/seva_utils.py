@@ -114,7 +114,7 @@ def parse_task(
     c2ws = c2ws[sampled_indices]
     Ks = Ks[sampled_indices]
 
-    # Daniel  - handle case of single view to single view
+    # handle case of single view to single view
     if (len(split_dict["train_ids"]) == 1) and (len(sampled_indices) == 2):
         if np.array(split_dict["train_ids"])[0] == sampled_indices.min():
             input_indices = [0]
@@ -151,7 +151,7 @@ def create_train_test_split(scene: Path, frame_indices: List[int]) -> Path:
     
     Args:
         scene: The path to the scene directory.
-        all_frame_indices: A list of frame indices that make up the total num_views.
+        frame_indices: A list of frame indices that make up the total num_views.
         
     Returns:
         The Path object for the created temporary JSON file.
@@ -159,7 +159,7 @@ def create_train_test_split(scene: Path, frame_indices: List[int]) -> Path:
     if len(frame_indices) < 2:
         raise ValueError("Must provide at least two frame indices.")
 
-    # Randomly select one index to be the 'train_id' (anchor view)
+    # Randomly select one index to be the 'train_id' 
     train_id = random.choice(frame_indices)
     
     test_ids = frame_indices
@@ -318,7 +318,7 @@ def get_value_dict_of_scene(scene, frame_indices: List[int]):
     test_Ks = camera_cond["K"][test_indices]
 
     
-    num_imgs_no_padding = len(input_imgs) + len(test_imgs) # Daniel
+    num_imgs_no_padding = len(input_imgs) + len(test_imgs) 
 
     chunk_strategy = options.get("chunk_strategy", "gt")
     (
@@ -417,8 +417,8 @@ def get_value_dict_of_scene(scene, frame_indices: List[int]):
         camera_scale=options.get("camera_scale", 2.0),
     )
 
-    value_dict["num_imgs_no_padding"] = num_imgs_no_padding # Daniel
-    value_dict["version_dict"] = version_dict # Daniel - return version_dict as well
+    value_dict["num_imgs_no_padding"] = num_imgs_no_padding 
+    value_dict["version_dict"] = version_dict 
     
     
     # remove temporary JSON file created for SEVA's parser
