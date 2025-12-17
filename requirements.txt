@@ -1,0 +1,8 @@
+transformers
+accelerate
+scipy
+trimesh
+safetensors
+tensorboard
+pycolmap
+poselib

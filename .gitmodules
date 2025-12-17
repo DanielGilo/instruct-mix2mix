@@ -1,0 +1,4 @@
+[submodule "external/stable-virtual-camera"]
+	path = external/stable-virtual-camera
+	url = https://github.com/DanielGilo/stable-virtual-camera.git
+	branch = modifications-for-i-mix2mix
