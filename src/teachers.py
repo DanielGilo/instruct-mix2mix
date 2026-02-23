@@ -30,7 +30,7 @@ class DiffusionPipeline:
 
 
 class DiffusersStableDiffusionPipeline(DiffusionPipeline):
-    def __init__(self, model_id, prompt, device="cuda", dtype=torch.float16, do_compile=True):
+    def __init__(self, model_id, prompt, device="cuda", dtype=torch.float16, do_compile=False):
         super().__init__(model_id, device, dtype)
         self.latent_shape = [self.pipeline.vae.config.latent_channels,
                              self.pipeline.unet.config.sample_size,

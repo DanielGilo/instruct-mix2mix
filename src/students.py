@@ -14,7 +14,7 @@ from seva.eval import unload_model
 
 
 class SevaPipeline:
-    def __init__(self, device, value_dict, do_compile=True, use_grad_checkpointing=False):
+    def __init__(self, device, value_dict, do_compile=False, use_grad_checkpointing=False):
         self.device = device
         self.model = SGMWrapper(load_model(weight_name="modelv1.1.safetensors", device="cpu", verbose=True)).to(device=self.device)
         self.model.use_grad_checkpointing = use_grad_checkpointing
@@ -204,7 +204,6 @@ class SevaPipeline:
             samples = self.ae.decode(latent, 1).to(device="cpu")
         if type != "pt": # np or PIL
             raise NotImplementedError("Only 'pt' type is implemented currently.")
-            #samples = seva_tensor_to_np_plottable(samples.detach())  
         if type == "PIL":
             samples = [Image.fromarray(sample) for sample in samples]
 

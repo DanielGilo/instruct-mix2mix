@@ -1,6 +1,8 @@
 # InstructMix2Mix
 
-**Official implementation of "InstructMix2Mix: Consistent Sparse-View Editing Through Multi-View Model Personalization."**
+**Official implementation of "InstructMix2Mix: Consistent Sparse-View Editing Through Multi-View Model Personalization (CVPR 2026)."**
+
+
 
 ### [Project Page](https://danielgilo.github.io/instruct-mix2mix/) | [Research Paper](https://arxiv.org/pdf/2511.14899)
 
@@ -55,7 +57,7 @@ This project relies on SEVA model weights. You must obtain access as detailed in
 
 ## 📥 Input Format
 
-I-Mix2Mix expects a **NeRF-style** `transforms.json` directory containing camera intrinsics and a `frames` list specifying per-frame extrinsics and image file paths. A subset of these frames is selected for editing via user-provided indices.
+I-Mix2Mix expects a **NeRF-style** `transforms.json` file containing camera intrinsics and a `frames` list specifying per-frame extrinsics and image file paths. A subset of these frames is selected for editing via user-provided indices.
 
 * **Sample Data:** See the `./data/` directory for reference scenes.
 * **Preprocessing:** All input images undergo the SEVA pipeline:

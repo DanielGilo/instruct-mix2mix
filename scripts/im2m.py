@@ -32,9 +32,8 @@ from src.loss import sds_loss
 from src.seva_utils import get_value_dict_of_scene
 from src.attention import CrossFrameAttnProcessor
 
-
-os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"  # avoids memory fragmentation
-os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"  # necessary when setting torch.use_dererministic_algorithms(True), increases memory by 24MB
+#os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"  # avoids memory fragmentation
+#os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"  # necessary when setting torch.use_dererministic_algorithms(True), increases memory by 24MB
 
 rng = np.random.default_rng(42)
 
@@ -44,9 +43,12 @@ def seed_everything(seed: int = 0):
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-    torch.use_deterministic_algorithms(True, warn_only=False)
+    
+    ## Uncomment for deterministic behavior, slows training and may increase memory usage
+    #torch.backends.cudnn.deterministic = True
+    #torch.backends.cudnn.benchmark = False
+    #torch.use_deterministic_algorithms(True, warn_only=False)
+    
     rng = np.random.default_rng(seed)
     random.seed(seed)
     np.random.seed(seed)
@@ -104,7 +106,6 @@ def parse_arguments():
     parser.add_argument("--n_distill_initial_timestep",
                         type=int,
                         default=200,
-                        required=True,
                         help="Number of distillation iterations of the first timestep.")
     parser.add_argument("--distill_dt",
                         type=int,
@@ -547,11 +548,6 @@ def distill_step(
     """
     device = config.device
 
-    aggressive_gc = getattr(config, "aggressive_gc", False)
-    if aggressive_gc:
-        gc.collect()
-        torch.cuda.empty_cache()
-
     optimizer.zero_grad(set_to_none=True)
 
     # 1. Student forward: predict z0
@@ -614,9 +610,6 @@ def distill_step(
         w_t,
     )
 
-    if aggressive_gc:
-        gc.collect()
-        torch.cuda.empty_cache()
 
     # 6. Backprop + optimizer step + scheduler
     scaler.scale(loss).backward()
