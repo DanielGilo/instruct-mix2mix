@@ -5,7 +5,7 @@ import { Github, FileText, Camera, Mail, Copy } from "lucide-react";
 const META = {
   title:
     "InstructMix2Mix: Consistent Sparse-View Editing Through Multi-View Model Personalization",
-  //venue: "Under review",
+  venue: "CVPR 2026",
   links: {
     paper: "https://arxiv.org/abs/2511.14899", // arXiv / OpenReview / camera-ready
     code: "https://github.com/DanielGilo/instruct-mix2mix/tree/main", // GitHub repo
