@@ -297,15 +297,12 @@ const REFERENCES = [
   "Minghao Chen, Iro Laina, and Andrea Vedaldi. DGE: Direct Gaussian 3D Editing by Consistent Multi-View Editing. ECCV 2024.",
 ];
 
-// BibTeX (fill once de-anonymized)
-const BIBTEX = `@misc{gilo2025instructmix2mixconsistentsparseviewediting,
-      title={InstructMix2Mix: Consistent Sparse-View Editing Through Multi-View Model Personalization}, 
-      author={Daniel Gilo and Or Litany},
-      year={2025},
-      eprint={2511.14899},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2511.14899}, 
+const BIBTEX = `@inproceedings{gilo2026instructmix2mix,
+  title={InstructMix2Mix: Consistent Sparse-View Editing Through Multi-View Model Personalization},
+  author={Gilo, Daniel and Litany, Or},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={29000--29011},
+  year={2026}
 }`;
 
 // -------------- UI Helpers --------------
@@ -560,8 +557,8 @@ export default function ProjectPage() {
           
           <div className="max-w-xl space-y-6">
             {META.venue && (
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600">
-                <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700 tracking-wide uppercase">
+                <span className="h-1.5 w-1.5 rounded-full bg-sky-500" />
                 {META.venue}
               </div>
               )}
